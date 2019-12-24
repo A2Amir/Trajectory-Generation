@@ -59,21 +59,21 @@ Now, there may be something bothering you about the solution identified in the f
 ## 2.2 Types of Motion Planning Algorithms
 There are many classes of motion planning algorithms and today we'll focus on one of these classes, but it's worth mentioning the others.
 
-**Combinatorial methods** usually consists in dividing the free space into small pieces and first solving
+1. **Combinatorial methods** usually consists in dividing the free space into small pieces and first solving
 the motion planning problem by connecting the atomic elements. They are very intuitive ways to find initial approximate solution, but they usually do not scale well for large environments.
 
 <p align="right"> <img src="./img/4.png" style="right;" alt=" Combinatorial methods " width="300" height="300"> </p> 
 
-Next, **potential fields** are reacting methods. Each obstacle is going to create a sort of anti-gravity field, which makes it harder for the vehicle to come close to it. For example, you could imagine using this idea around pedestrians or bikes to encourage your planning algorithm to find trajectories that stay away from them. The main problem with most potential field methods is that they sometimes push us into local minima, which can prevent us from finding a solution.
+2. Next, **potential fields** are reacting methods. Each obstacle is going to create a sort of anti-gravity field, which makes it harder for the vehicle to come close to it. For example, you could imagine using this idea around pedestrians or bikes to encourage your planning algorithm to find trajectories that stay away from them. The main problem with most potential field methods is that they sometimes push us into local minima, which can prevent us from finding a solution.
 
 <p align="right"> <img src="./img/5.png" style="right;" alt=" potential field methods " width="300" height="200"> </p> 
 
 
-**Optimal control** consists in trying to solve the motion planning problem and the controlling input generation in one algorithm using a dynamic model of a vehicle or start configuration and end configuration. We want to generate a sequence of inputs, for example, steering angle and throttle inputs, that would lead us from start to end configuration while optimizing a cost function relative to the control inputs such as minimizing gas consumption and relative to the configuration of the car, such as staying at a distance from other vehicles.
+3. **Optimal control** consists in trying to solve the motion planning problem and the controlling input generation in one algorithm using a dynamic model of a vehicle or start configuration and end configuration. We want to generate a sequence of inputs, for example, steering angle and throttle inputs, that would lead us from start to end configuration while optimizing a cost function relative to the control inputs such as minimizing gas consumption and relative to the configuration of the car, such as staying at a distance from other vehicles.
 
 There are a lot of very nice ways to do that. Most of them based on numerical optimization methods.However, it is hard to incorporate all of the constraints related to the other vehicles in a good enough way in order for these algorithms to work fast.
 
-Finally, there are **sampling based methods**,which are what we will focus on today.These algorithms are very popular because they require a somewhat easier to compute definition of the free space. Sampling based methods use a collision detection module that probes the free space to see if a configuration is in collision or not.
+4. Finally, there are **sampling based methods**,which are what we will focus on today.These algorithms are very popular because they require a somewhat easier to compute definition of the free space. Sampling based methods use a collision detection module that probes the free space to see if a configuration is in collision or not.
 
 Unlike combinatorial or optimal control methods, which analyzes the whole environment, not all parts of the free space need to be explored in order to find a solution. Explored parts are stored in a graph structure that can be searched with a graph search algorithm like Dijkstra or A star.
 
