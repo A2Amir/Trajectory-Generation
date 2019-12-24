@@ -99,7 +99,7 @@ All true statements about [A*](https://github.com/A2Amir/Search-Algorithms-A-Sta
 * Solutions it finds are not drivable (it depends on the search space that is being used and what it represents. If the search space represent only the position x,y and we're trying to move a car, there is no guarantees that the sequence of position returned by A* will be drivable but We can define a more complex search space including heading).
 * Solutions it finds are always optimal assuming an admissible heuristic.
 
-the fundamental problem here is A* is discrete whereas the robotic world is continuous so the question arises, is there version of A* that can deal with the continuous nature and give us probably executable paths? 
+The fundamental problem here is A* is discrete whereas the robotic world is continuous so the question arises, is there version of A* that can deal with the continuous nature and give us probably executable paths? 
 
 The key to solving this with A* has to do with a state transition function.Suppose we are in a cell like below and you play a sequence of very small steps simulations using our continuous math from before, then a state at the point A might find itself right in the corner (B) of the next discrete state. 
 
