@@ -105,11 +105,11 @@ The key to solving this with A* has to do with a state transition function.Suppo
 
 Instead of assigning just the next discrete state to the grid cell, an algorithm called Hybrid A* memorizes the exact X prime Y prime and theta and associate it with the next discrete state, the first time the grid cell (the next discrete state cell) is expanded.  Then when expanding from the next discrete state it uses a specific starting point (B) to figure out what the next cell might be.
 
-<p align="right"> <img src="./img/7.png" style="right;" alt=" Hybrid A*  " width="500" height="300"> </p> 
+<p align="right"> <img src="./img/7.png" style="right;" alt=" Hybrid A*  " width="500" height="200"> </p> 
 
 Like below, it might happen that the same cell used to get in A* maybe from C going into a different continuous polymerization of X, Y and theta (D), because in A* we tend to expand cells along the shortest path before we look the longer paths, we not just cut this(C to D) off and never consider again. This leads to a lack of completeness, which means there might be solutions to the navigation problem that this algorithm doesn't capture. It does give us correctness so as long as our motion equations are correct, the resulting paths can be executed. 
 
-<p align="right"> <img src="./img/8.png" style="right;" alt=" Hybrid A*  " width="500" height="300"> </p> 
+<p align="right"> <img src="./img/8.png" style="right;" alt=" Hybrid A*  " width="500" height="200"> </p> 
 
 Now, here is a caveat, every time we expand the grid cell, we memorize explicitly the continuous values of X prime, Y prime and theta with the grid cell. 
 
