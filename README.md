@@ -88,7 +88,7 @@ Two main classes of methods can be identified as sampling based:
 We have scratched the surface on all the different sorts of planning algorithms that exist.
 
 
-Next, I'm going to present the Hybrid A* algorithm but before that, I suggest you re-read this repository that you saw earlier on A*. 
+Next, I'm going to present the Hybrid A* algorithm but before that, I suggest you re-read this [repository](https://github.com/A2Amir/Search-Algorithms-A-Star-and-Dynamic-Prgramming) that you learned earlier on A*. 
 
 
 
