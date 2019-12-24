@@ -121,6 +121,31 @@ All true statements about Hybrid A* are:
 * Solutions it finds are drivable.
 * Solutions it finds are not always optimal.
 
+## 3.1 Hybrid A* in Practice
+
+In the image above about Hybrid A*, the update equations that we used were somewhat generic to most X Y field configuration spaces. In particular, we don't specify what Omega (w) is. Omega is the heading rate of change (that would mean that the robot can turn around its Z axis without constraints). Now for some robots, it might be that we can specify any omega independently of its state. For car though, this is not very realistic and we should probably use the bicycle model.
+
+<p align="right"> <img src="./img/9.png" style="right;" alt="  the update equation  " width="300" height="150"> </p> 
+
+The bicycle model gives us an equation for Omega like below. Here, 'L' is the distance between the front and rear axle , 'δ' is the steering angle and ⱴ is the constant positive velocity. 
+<p align="right"> <img src="./img/10.png" style="right;" alt="   bicycle model gives us an equation for Omega " width="300" height="250"> </p> 
+
+Now, for our Hybrid A* algorithm, we need to decide which configuration can be reached from the current node considered, in order to add them to the open set. In practice, we would probably use some number of steering angles between maximum left steer and maximum right steer angle but the more different Deltas you add the longer it takes for your algorithm to complete.
+
+Therefore, in this example, we will only choose three angles to pick delta from:
+
+* The maximum left steering angle.
+* Zero steering angle.
+* The maximum right steering angle.
+
+In the case of a car that can turn its wheels 35 degrees at most, that would be -35, 0 and 35.This allows us to expand the search tree with three new motion primitives
+* go straight
+* steer left 
+* steer right.
+
+
+
+
 
 
 
