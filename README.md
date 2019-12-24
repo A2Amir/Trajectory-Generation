@@ -258,19 +258,15 @@ def search(grid, start, goal):
             # If we have expanded outside the grid, skip this next_s.
             if next_s is not in the grid:
                 continue
-            # Otherwise, check that we haven't already visited this cell and
-            # that there is not an obstacle in the grid there.
+            # Otherwise, check that we haven't already visited this cell and that there is not an obstacle in the grid there.
             stack_num = theta_to_stack_number(next_s.theta)
-            if closed[stack_num][idx(next_s.x)][idx(next_s.y)] == 0 
-                and grid[idx(next_s.x)][idx(next_s.y)] == 0:
+            if closed[stack_num][idx(next_s.x)][idx(next_s.y)] == 0 and grid[idx(next_s.x)][idx(next_s.y)] == 0:
                 # The state can be added to the opened stack.
                 opened.append(next_s)
-                # The stack_number, idx(next_s.x), idx(next_s.y) tuple 
-                # has now been visited, so it can be closed.
+                # The stack_number, idx(next_s.x), idx(next_s.y) tuple has now been visited, so it can be closed.
                 closed[stack_num][idx(next_s.x)][idx(next_s.y)] = 1
                 # The next_s came from the current state, and is recorded.
                 came_from[stack_num][idx(next_s.x)][idx(next_s.y)] = current
-
 ~~~
 
 
