@@ -153,7 +153,7 @@ Before seeing below how that works in a robot maze i should mention:
 <p align="right"> <img src="./img/9.gif" style="right;" alt="  in a robot maze " width="500" height="350"> </p> 
 
 
-
+Sometimes, the algorithm fails to find the solution when one actually exists and Hybrid A* will not find any. We can reduce the likelihood of this problem by increasing the resolution of our grid or adding a third dimension to the search space for the heading. Indeed, this would allow us not to close the position in the map for all headings but only for a specific range, which may allow us to find the solution.
 
 
 
