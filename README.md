@@ -143,6 +143,14 @@ In the case of a car that can turn its wheels 35 degrees at most, that would be 
 * steer left 
 * steer right.
 
+Before seeing below how that works in a robot maze i should mention:
+
+* I will use gray color to indicate adding a cell to open list.
+* We would generate three trajectories, the one for going straight, the one for turning right, the one for turning left. In this case, we can discard the trajectories that go off the map or collide.
+* Closed cell is indicated with the green check-mark.
+* In all these steps, I'm keeping track of not just what cell I am in but also where in that cell I am, including orientation.
+
+<p align="right"> <img src="./img/9.gif" style="right;" alt="  in a robot maze " width="600" height="400"> </p> 
 
 
 
