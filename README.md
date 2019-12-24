@@ -59,21 +59,21 @@ Now, there may be something bothering you about the solution identified in the f
 ## 2.2 Types of Motion Planning Algorithms
 There are many classes of motion planning algorithms and today we'll focus on one of these classes, but it's worth mentioning the others.
 
-1. **Combinatorial methods** usually consists in dividing the free space into small pieces and first solving
+1.**Combinatorial methods** usually consists in dividing the free space into small pieces and first solving
 the motion planning problem by connecting the atomic elements. They are very intuitive ways to find initial approximate solution, but they usually do not scale well for large environments.
 
 <p align="right"> <img src="./img/4.png" style="right;" alt=" Combinatorial methods " width="300" height="300"> </p> 
 
-2. Next, **potential fields** are reacting methods. Each obstacle is going to create a sort of anti-gravity field, which makes it harder for the vehicle to come close to it. For example, you could imagine using this idea around pedestrians or bikes to encourage your planning algorithm to find trajectories that stay away from them. The main problem with most potential field methods is that they sometimes push us into local minima, which can prevent us from finding a solution.
+2.Next, **potential fields** are reacting methods. Each obstacle is going to create a sort of anti-gravity field, which makes it harder for the vehicle to come close to it. For example, you could imagine using this idea around pedestrians or bikes to encourage your planning algorithm to find trajectories that stay away from them. The main problem with most potential field methods is that they sometimes push us into local minima, which can prevent us from finding a solution.
 
 <p align="right"> <img src="./img/5.png" style="right;" alt=" potential field methods " width="300" height="200"> </p> 
 
 
-3. **Optimal control** consists in trying to solve the motion planning problem and the controlling input generation in one algorithm using a dynamic model of a vehicle or start configuration and end configuration. We want to generate a sequence of inputs, for example, steering angle and throttle inputs, that would lead us from start to end configuration while optimizing a cost function relative to the control inputs such as minimizing gas consumption and relative to the configuration of the car, such as staying at a distance from other vehicles.
+3.**Optimal control** consists in trying to solve the motion planning problem and the controlling input generation in one algorithm using a dynamic model of a vehicle or start configuration and end configuration. We want to generate a sequence of inputs, for example, steering angle and throttle inputs, that would lead us from start to end configuration while optimizing a cost function relative to the control inputs such as minimizing gas consumption and relative to the configuration of the car, such as staying at a distance from other vehicles.
 
 There are a lot of very nice ways to do that. Most of them based on numerical optimization methods.However, it is hard to incorporate all of the constraints related to the other vehicles in a good enough way in order for these algorithms to work fast.
 
-4. Finally, there are **sampling based methods**,which are what we will focus on today.These algorithms are very popular because they require a somewhat easier to compute definition of the free space. Sampling based methods use a collision detection module that probes the free space to see if a configuration is in collision or not.
+4.Finally, there are **sampling based methods**,which are what we will focus on today.These algorithms are very popular because they require a somewhat easier to compute definition of the free space. Sampling based methods use a collision detection module that probes the free space to see if a configuration is in collision or not.
 
 Unlike combinatorial or optimal control methods, which analyzes the whole environment, not all parts of the free space need to be explored in order to find a solution. Explored parts are stored in a graph structure that can be searched with a graph search algorithm like Dijkstra or A star.
 
@@ -89,6 +89,38 @@ We have scratched the surface on all the different sorts of planning algorithms 
 
 
 Next, I'm going to present the Hybrid A* algorithm but before that, I suggest you re-read this [repository](https://github.com/A2Amir/Search-Algorithms-A-Star-and-Dynamic-Prgramming) that you learned earlier on A*. 
+
+# 3. The Hybrid A* algorithm
+
+All true statements about [A*](https://github.com/A2Amir/Search-Algorithms-A-Star-and-Dynamic-Prgramming) are:
+* It uses a discrete search space
+* It uses an optimistic heuristic function to guide grid cell expansion.
+* It always finds a solution if one exists (Completeness).
+* Solutions it finds are not drivable (it depends on the search space that is being used and what it represents. If the search space represent only the position x,y and we're trying to move a car, there is no guarantees that the sequence of position returned by A* will be drivable but We can define a more complex search space including heading).
+* Solutions it finds are always optimal assuming an admissible heuristic.
+
+the fundamental problem here is A* is discrete whereas the robotic world is continuous so the question arises, is there version of A* that can deal with the continuous nature and give us probably executable paths? 
+
+The key to solving this with A* has to do with a state transition function.Suppose we are in a cell like below and you play a sequence of very small steps simulations using our continuous math from before, then a state at the point A might find itself right in the corner (B) of the next discrete state. 
+
+Instead of assigning just the next discrete state to the grid cell, an algorithm called Hybrid A* memorizes the exact X prime Y prime and theta and associate it with the next discrete state, the first time the grid cell (the next discrete state cell) is expanded.  Then when expanding from the next discrete state it uses a specific starting point (B) to figure out what the next cell might be.
+
+<p align="right"> <img src="./img/7.png" style="right;" alt=" Hybrid A*  " width="500" height="300"> </p> 
+
+Like below, it might happen that the same cell used to get in A* maybe from C going into a different continuous polymerization of X, Y and theta (D), because in A* we tend to expand cells along the shortest path before we look the longer paths, we not just cut this(C to D) off and never consider again. This leads to a lack of completeness, which means there might be solutions to the navigation problem that this algorithm doesn't capture. It does give us correctness so as long as our motion equations are correct, the resulting paths can be executed. 
+
+<p align="right"> <img src="./img/8.png" style="right;" alt=" Hybrid A*  " width="500" height="300"> </p> 
+
+Now, here is a caveat, every time we expand the grid cell, we memorize explicitly the continuous values of X prime, Y prime and theta with the grid cell. 
+
+All true statements about Hybrid A* are:
+
+* It uses a continuous search space
+* It uses an optimistic heuristic function to guide grid cell expansion.
+* It does not always find a solution if one exists.
+* Solutions it finds are drivable.
+* Solutions it finds are not always optimal.
+
 
 
 
