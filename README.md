@@ -270,11 +270,12 @@ def search(grid, start, goal):
 ~~~
 
 
-## 3.4 [Implement Hybrid A*]() in C++ 
+## 3.4 [Implement Hybrid A*](https://github.com/A2Amir/Trajectory-Generation/blob/master/C%2B%2B/main.cpp) in C++ 
 
 In this section, is provided a working implementation of a breadth first search algorithm which does not use any heuristics to improve its efficiency.
 
 One possible implementation for Hybrid A* is to try to make the appropriate modifications to the breadth first search algorithm so that it takes advantage of heuristic functions (possibly the ones mentioned in the previous section using the "distance to goal" heuristic function) to reduce the number of grid cell expansions required. In this implementation, we have added an f value to the maze_s struct, which is set in the expand function. Additionally, we've added two new functions: heuristic and compare_maze_s. The compare_maze_s function is used for comparison of maze_s objects when sorting the opened stack.
+
 To get an even lower number of expansions, try reducing NUM_THETA_CELLS in hybrid_breadth_first.h to reduce the total number of cells that can be searched in the closed array. Be careful though! Making NUM_THETA_CELLS too small might result in the algorithm being unable to find a path through the maze. 
 
 Another possibility for improvement is to use the regular A* algorithm to assign a cost value to each grid cell. This grid of costs can then be used as the heuristic function, which will lead to an extremely efficient search. If you are looking for additional practice, give this a try! 
