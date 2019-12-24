@@ -150,7 +150,7 @@ Before seeing below how that works in a robot maze i should mention:
 * Closed cell is indicated with the green check-mark.
 * In all these steps, I'm keeping track of not just what cell I am in but also where in that cell I am, including orientation.
 
-<p align="right"> <img src="./img/9.gif" style="right;" alt="  in a robot maze " width="600" height="400"> </p> 
+<p align="right"> <img src="./img/9.gif" style="right;" alt="  in a robot maze " width="500" height="350"> </p> 
 
 
 
