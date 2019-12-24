@@ -22,7 +22,7 @@ Now, there is a word that you might encounter quite a bit if you start reading m
 
 Consider the maze below where these worlds were all 2D grids, the robot configuration was sometimes two dimensional when we presented it as a x and y point and sometimes three dimensional when also including the robot's heading (x, y, heading). In fact, the configuration space for vehicle that can become even larger depending on what motion planning algorithms we decide to use. 
 
-<p align="right"> <img src="./img/1.png" style="right;" alt=" the maze " width="200" height="100"> </p> 
+<p align="right"> <img src="./img/1.png" style="right;" alt=" the maze " width="200" height="200"> </p> 
 
 With this idea of configuration space in mind, we can define a motion planning problem as follows. We're given three things:
 
