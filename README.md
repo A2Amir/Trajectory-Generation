@@ -22,17 +22,17 @@ Now, there is a word that you might encounter quite a bit if you start reading m
 
 Consider the maze below where these worlds were all 2D grids, the robot configuration was sometimes two dimensional when we presented it as a x and y point and sometimes three dimensional when also including the robot's heading (x, y, heading). In fact, the configuration space for vehicle that can become even larger depending on what motion planning algorithms we decide to use. 
 
-<p align="right"> <img src="./img/1.png" style="right;" alt=" the maze " width="600" height="400"> </p> 
+<p align="right"> <img src="./img/1.png" style="right;" alt=" the maze " width="200" height="150"> </p> 
 
 With this idea of configuration space in mind, we can define a motion planning problem as follows. We're given three things:
 
-* An initial configuration (q <sub> start</start>)
-* A goal configuration(q <sub> goal</start>)
+* An initial configuration (q <sub> start</sub>)
+* A goal configuration(q <sub> goal</sub>)
 * Some constraints describing how the vehicle was allowed to move, its dynamics and the description of the environment.
 
-Usually, the start configuration is the current configuration of the car given to us by the localization value and the sensors that give us information about car location, speed, acceleration they can go.
+Usually, the start configuration is the current configuration of the car given to us by [the localization](https://github.com/A2Amir/Markov-Localization-and-the-Kidnapped-Vehicle-) value and the sensors that give us information about car location, speed, acceleration they can go.
 
-The behavior layer gives us a desired end configuration(q <sub> goal</start>) and maybe some constraints regarding where to go and at which speed.
+The behavior layer gives us a desired end configuration(q <sub> goal</sub>) and maybe some constraints regarding where to go and at which speed.
 
 Finally, the prediction completes this problem by giving us information about how the obstacle region will evolve in time.
 
