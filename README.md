@@ -251,18 +251,16 @@ def search(grid, start, goal):
             # If so, the trajectory has reached the goal.
             return path
 
-        # Otherwise, expand the current state to get a list of possible 
-        # next states.
+        # Otherwise, expand the current state to get a list of possible next states.
         next_states = expand(current, goal)
         for next_s in next_states:
             # If we have expanded outside the grid, skip this next_s.
             if next_s is not in the grid:
                 continue
             # Otherwise, check that we haven't already visited this cell and that there is not an obstacle in the grid there.
-            stack_num = theta_to_stack_number(next_s.theta);
+            stack_num = theta_to_stack_number(next_s.theta)
             
             if closed[stack_num][idx(next_s.x)][idx(next_s.y)] == 0 and grid[idx(next_s.x)][idx(next_s.y)] == 0:
-            
                     # The state can be added to the opened stack.
                     opened.append(next_s)
                     # The stack_number, idx(next_s.x), idx(next_s.y) tuple has now been visited, so it can be closed.
