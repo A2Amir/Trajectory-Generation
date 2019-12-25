@@ -313,5 +313,7 @@ It is not sufficient to solve the planning problem when there are dynamic object
 
 <p align="right"> <img src="./img/12.png" style="right;" alt="configurations all set up in time" width="300" height="90"> </p> 
 
+Now, we need a way to generate such a trajectory and the way we're going to do this, is by separating the planning we do in the S dimension from the planning we do in a d dimension. Instead of thinking about one picture in three dimension, we usually decide to reason about two pictures. Each of which is in two dimensions. I'm going to walk through the same vehicle tracking example you see in the previous gif.
 
+<p align="right"> <img src="./img/15.gif" style="right;" alt="separating the planning we do in the S dimension from the planning we do in a d dimension" width="420" height="300"> </p> 
 
