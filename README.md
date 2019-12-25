@@ -317,3 +317,4 @@ Now, we need a way to generate such a trajectory and the way we're going to do t
 
 <p align="right"> <img src="./img/15.gif" style="right;" alt="separating the planning we do in the S dimension from the planning we do in a d dimension" width="420" height="300"> </p> 
 
+As seen abobe it's a trajectory and we can fully describe what the vehicle did within these 15 seconds.
