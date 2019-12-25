@@ -280,3 +280,34 @@ To get an even lower number of expansions, try reducing NUM_THETA_CELLS in hybri
 
 Another possibility for improvement is to use the regular A* algorithm to assign a cost value to each grid cell. This grid of costs can then be used as the heuristic function, which will lead to an extremely efficient search. If you are looking for additional practice, give this a try! 
 
+
+## 3.5 Environment Classification
+
+
+We have just implemented Hybrid A* which is one of the best algorithm for finding trajectories in unstructured environments. An example of such an environment is a parking lot or a maze and these environments tend to have less specific rules than highway or streets and lower driving speeds. They also do not have an obvious reference path that corresponds to what we should be driving 90% of the time because they change so much.
+
+On the other hand, highway or streets are very structured environments and in these environments, all motion is more constrained by predefined rules regarding how we can move on the road. In the image below, you can see below differences between unstructured and structured environments.
+
+<p align="right"> <img src="./img/11.png" style="right;" alt="  Environment Classification " width="500" height="250"> </p> 
+
+
+All these rules impose constraints, which have to be satisfied but also for guidance regarding what the trajectory should look like. While a Hybird A* is great at finding solutions everywhere, it does not take advantage of this information (For example, the road structure itself can be used as a reference path). Let's see how we can use it.
+
+<p align="right"> <img src="./img/11.png" style="right;" alt="  Environment Classification " width="500" height="250"> </p> 
+
+## 3.6 The Need for Time
+
+
+Instead of Cartesian coordinates we will be relying heavily on Frenet coordinates, which help us simplify the problem and as a reminder of how Frenet coordinates  work, you can check this [repository](https://github.com/A2Amir/Prediction-Phase-in-the-trajectory-generation-of-cars).
+
+Now I'm going to emphasize why it is important to not just generate a sequence of configurations for vehicle using algorithms like A* and Hybrid A*, which refers as path planning, but also to decide when we're going to be in each configuration. let's see the gif below using discrete time increments.
+
+<p align="right"> <img src="./img/12.gif" style="right;" alt="discrete time increments" width="500" height="250"> </p> 
+
+As see in the gif, there is traffic on highways, which means that the traversal space is constantly changing over time. To avoid collision in dynamic environment, we need to think about time as well and that means that driving in traffic is fundamentally a three dimensional(s and d from FreNet Coordinate and t from time) problem.
+
+The A* and Hybird A*algorithms play an important role in autonomous driving but the path they generate don't really take predictions into account. For example, let's project back to when the blue vehicle first wanted to change lane in the gif above. Here we will include the time as a third dimension.
+
+<p align="right"> <img src="./img/13.gif" style="right;" alt="discrete time increments" width="500" height="250"> </p> 
+
+
