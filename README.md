@@ -317,4 +317,19 @@ Now, we need a way to generate such a trajectory and the way we're going to do t
 
 <p align="right"> <img src="./img/15.gif" style="right;" alt="separating the planning we do in the S dimension from the planning we do in a d dimension" width="420" height="300"> </p> 
 
-As seen abobe it's a trajectory and we can fully describe what the vehicle did within these 15 seconds.
+As seen above it's a trajectory and we can fully describe what the vehicle did within these 15 seconds.
+
+# 4. Structured Trajectory Generation
+In the next few segments, I'm going to present a method for trajectory planning that is useful in structured environments like highway driving. To do that, I'll introduce the idea of Jerk minimization to generate a nice trajectory from a start configuration to a goal configuration.
+
+I will show you how to generate Jerk minimizing trajectories using polynomials and then present a brief derivation on how to compute the coefficients of the polynomial that solves our problem.
+
+Then I will show you an example of what one such trajectory looks like on the highway and how we can evaluate its drive-ability and compare it to other trajectories.
+
+Finally, I will show you how by generating many similar jerk minimizing trajectories we can compare them and select the best one for the situation we want to drive through.
+
+## 4.1 Trajectories with Boundary Conditions
+
+By assuming, a situation like below s, t and d, t trajectories turns out that these aren't physically possible. The kink in the slope would translate in an instantaneous jumping speed, which would require infinite acceleration.
+
+
