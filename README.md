@@ -293,7 +293,6 @@ On the other hand, highway or streets are very structured environments and in th
 
 All these rules impose constraints, which have to be satisfied but also for guidance regarding what the trajectory should look like. While a Hybird A* is great at finding solutions everywhere, it does not take advantage of this information (For example, the road structure itself can be used as a reference path). Let's see how we can use it.
 
-<p align="right"> <img src="./img/11.png" style="right;" alt="  Environment Classification " width="500" height="250"> </p> 
 
 ## 3.6 The Need for Time
 
@@ -309,5 +308,10 @@ As see in the gif, there is traffic on highways, which means that the traversal 
 The A* and Hybird A*algorithms play an important role in autonomous driving but the path they generate don't really take predictions into account. For example, let's project back to when the blue vehicle first wanted to change lane in the gif above. Here we will include the time as a third dimension.
 
 <p align="right"> <img src="./img/13.gif" style="right;" alt="discrete time increments" width="500" height="250"> </p> 
+
+It is not sufficient to solve the planning problem when there are dynamic objects around us which in autonomous driving is all the time. Therefore, we have to plan not only a sequence of configuration,S d and theta but also have these configurations all set up in time.The trajectory is a function which for any time t associates a configuration of a vehicle. 
+
+<p align="right"> <img src="./img/12.png" style="right;" alt="configurations all set up in time" width="300" height="90"> </p> 
+
 
 
