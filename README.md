@@ -270,7 +270,7 @@ def search(grid, start, goal):
 ~~~
 
 
-## 3.4 [Implement Hybrid A*](https://github.com/A2Amir/Trajectory-Generation/blob/master/C%2B%2B/main.cpp) in C++ 
+## 3.4 [Implement Hybrid A*](https://github.com/A2Amir/Trajectory-Generation/blob/master/C%2B%2B/HybirdAStar.cpp) in C++ 
 
 In this section, is provided a working implementation of a breadth first search algorithm which does not use any heuristics to improve its efficiency.
 
@@ -413,7 +413,7 @@ First, I want to show you how it's being used. Let's consider the S coordinates 
 <p align="right"> <img src="./img/29.png" style="right;" alt="Polynomial Trajectory Generation" width="500" height="300"> </p> 
 
 
-## 5.1 Implement Quintic Polynomial Solver C++
+## 5.1 Implement [Quintic Polynomial Solver](https://github.com/A2Amir/Trajectory-Generation/blob/master/C%2B%2B/PolynomialSolver.cpp) in C++
 
 In this section you will implement a quintic polynomial solver. This will let you take boundary conditions as input and generate a polynomial trajectory, which matches those conditions with minimal jerk.
 
