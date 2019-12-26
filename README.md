@@ -332,7 +332,7 @@ Finally, I will show you how by generating many similar jerk minimizing trajecto
 
 By assuming, a situation like below s, t and d, t trajectories turns out that these aren't physically possible. The kink in the slope would translate in an instantaneous jumping speed, which would require infinite acceleration.
 
-<p align="right"> <img src="./img/16.png" style="right;" alt="Trajectories with Boundary Conditions" width="500" height="350"> </p> 
+<p align="right"> <img src="./img/16.png" style="right;" alt="Trajectories with Boundary Conditions" width="500" height="320"> </p> 
 
 Now, if we were to send them (s, t and d, t trajectories) to our motion control module, maybe they can track this trajectory, but probably not and even if they tried to track it, it would result in a very strong acceleration of our car, which is both uncomfortable and dangerous.
 
@@ -342,5 +342,35 @@ This is why we need both continuity and smoothness in our trajectories. But how 
 We know we want continuity in position, since our car cannot teleport and it would not make sense to compute a trajectory starting 10 metres ahead of us and we also know that our car cannot instantaneously change speed, therefore the speed should also be continuous. Following this logic you could also say that the acceleration should be continuous and maybe the acceleration's derivity as well.
 
 **Position becomes velocity, velocity because acceleration, acceleration becomes jerk, and going even further you get snap, crackle, and pop**. It turns out that one of these quantities is directly related to human perception of comfort. Jerk is the quantity that humans perceive as uncomfortable. We can tolerate high acceleration but we don't like it when our acceleration changes too quickly which is high jerk. When we design trajectories for self-driving car, we would like it, if they were jerk minimizing.
+
+## 4.2 Jerk Minimizing Trajectories
+
+What is a jerk minimizing trajectory? An interesting and useful fact to us is that it is relatively easy to compute a jerk optimal trajectory in one dimension. In fact, consider a function s of t different from time zero to time tf.
+
+<p align="right"> <img src="./img/17.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="100"> </p> 
+
+recall that jerk is a third derivative of position. The total jerk accumulated over the duration of the trajectory and here, we want to analyze both positive and negative jerk therefore, we're going to look at total square jerk.
+
+Our problem is then to find a function s of t that minimizes the integral in the image below. If we go through the math required to find the minimum, you'll find that all the time derivatives of s of order six and more have to be zero in order for S to be jerk minimal.
+
+<p align="right"> <img src="./img/18.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="150"> </p> 
+
+Now, we can also use a helpful fact about functions, which is that any function can be written like below.  
+
+<p align="right"> <img src="./img/19.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="120"> </p> 
+
+When you take this form of s and add in the information that we have about it's time derivative, you find, All of the coefficient bigger than five are zero, which means that all minimum jerk trajectories can be represented as a fifth order polynomial like below.
+
+<p align="right"> <img src="./img/20.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="200"> </p> 
+
+You can see the equation has six coefficients and six coefficients means six tuneable parameters that we can choose from in order to define the shape of a 1D trajectory and in practice, we use them to specify the boundary conditions of our trajectory.
+
+The things we'd like to constrain are the initial position, velocity, and acceleration as well as the final position, velocity and acceleration. Now, this is just the 1D representing the longitude of displacement but, the same for the lateral displacement applies. This gives us 12 variables to pick in order to fully define the motion of our vehicle in S&D over time.
+
+<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="120"> </p> 
+
+## 4.3 Derivation Overview
+
+
 
 
