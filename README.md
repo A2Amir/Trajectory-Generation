@@ -505,8 +505,8 @@ You can play around with cost function design and weight tweaking. In the Python
 1.	run python [evaluate_ptg.py](https://github.com/A2Amir/Trajectory-Generation/blob/master/Python/evaluate_ptg.py). You should see a plot similar to the one below. This plot shows the s (x-axis) and d(y-axis) trajectories followed by a vehicle in traffic (red) and a self driving car (blue).
 
 <p align="right"> <img src="./img/41.png" style="right;" alt="Polynomial Trajectory Generation Playground" width="500" height="300"> </p>
-
-    In this situation, the self driving car was trying to get behind the target vehicle, but the cost functions it was using weren't weighted appropriately and so it didn't behave as expected.
+    
+   In this situation, the self driving car was trying to get behind the target vehicle, but the cost functions it was using weren't weighted appropriately and so it didn't behave as expected.
 
 
 2.	[ptg.py](https://github.com/A2Amir/Trajectory-Generation/blob/master/Python/ptg.py) - The primary code for generating a polynomial trajectory for some constraints. This is also where weights are assigned to cost functions. Adjusting these weights (and possibly adding new cost functions), can have a big effect on vehicle behavior.
