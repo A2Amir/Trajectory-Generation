@@ -375,7 +375,20 @@ In the previous section, I showed you that the position of a jerk minimizing tra
 
 First, we differentiate the equations of the position in order to get the equations for the velocity and then we differentiate it again in order to get the equation for the acceleration. Now, we could just plug in our six boundary conditions to get the six equations. 
 
-<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="120"> </p> 
+<p align="right"> <img src="./img/22.png" style="right;" alt="Derivation Overview" width="350" height="150"> </p> 
+
+
+But first we're going to do something that will make our life a little bit easier. We're going to set the initial time as zero and when we do that, we find 3 equations which means that three or four unknowns don't need to be identified anymore, which reduces the program from six unknowns to three. 
+
+<p align="right"> <img src="./img/23.png" style="right;" alt="Derivation Overview" width="350" height="190"> </p> 
+
+As seen below It simplifies those three trajectories by removing three of the unknowns here. 
+
+<p align="right"> <img src="./img/24.png" style="right;" alt="Derivation Overview" width="500" height="150"> </p> 
+
+We can gather the known terms into functions of the star boundary conditions to make it look like a bit cleaner. 
+
+<p align="right"> <img src="./img/25.png" style="right;" alt="Derivation Overview" width="350" height="190"> </p> 
 
 
 
