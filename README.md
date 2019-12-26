@@ -442,28 +442,28 @@ For maximum acceleration, we need to consider both lateral and longitudinal acce
 Here I want to give you a few hints about how to do some initial validation for your trajectory. In order to do so, we're going to neglect the curvature of the road and assume it is locally straight.
 Regarding longitudinal acceleration, we make the additional assumption that our heading is pretty much aligned with the road. This allows us to say that S doubled dots is the longitude acceleration of the car. Therefore, we need to check that at any point of the trajectory, this acceleration is less than the maximum acceleration that the engine would need to supply and more than the maximum braking deceleration of the car, this could be a fixed value in real life however, this should probably be computed using information about the friction of the road.
 
-<p align="right"> <img src="./img/31.png" style="right;" alt="longitudinal acceleration" width="300" height="90"> </p> 
+<p align="center"> <img src="./img/31.png" style="right;" alt="longitudinal acceleration" width="300" height="50"> </p> 
 
 Similarly, for lateral acceleration, we can check that all d double dot values are less than a fixed lateral acceleration value that can be set for comfort  or to avoid any risk of rollover in our car.
 
-<p align="right"> <img src="./img/32.png" style="right;" alt="lateral acceleration" width="200" height="60"> </p> 
+<p align="center"> <img src="./img/32.png" style="right;" alt="lateral acceleration" width="200" height="60"> </p> 
 
 Regarding steering angle, the bicycle model tells us that there's a nice relationship between the steering angle of the car and the radius of the circle of curvature, where L is the distance between the wheel axis and R is the circle radius. 
 
-<p align="right"> <img src="./img/33.png" style="right;" alt="steering angle" width="80" height="50"> </p> 
+<p align="center"> <img src="./img/33.png" style="right;" alt="steering angle" width="80" height="50"> </p> 
 
 The curvature is then given by the first formula below and therefore the maximum curvature allowed at any point of the trajectory is given by the second equation.
 
-<p align="right"> <img src="./img/34.png" style="right;" alt="steering angle" width="120" height="50"> </p> 
+<p align="center"> <img src="./img/34.png" style="right;" alt="steering angle" width="120" height="50"> </p> 
 
 If you remember, in the reading assignment about Hybird A*, the curvature for path is defined like below, where Δφi is the heading difference between two points of the trajectory and Δχi is the distance between them.
 
-<p align="right"> <img src="./img/35.png" style="right;" alt="steering angle" width="200" height="150"> </p> 
+<p align="center"> <img src="./img/35.png" style="right;" alt="steering angle" width="300" height="200"> </p> 
 
 
 Finally the velocity is checked against values specified by the map or the behavioral layer. For example, we could use the speed limit of the road in most cases that gives us a maximal velocity but also sometimes, we need a minimal velocity like on highways, where we don't want to drive too slow or we're backing up, negative S dot is not allowed.
 
-<p align="right"> <img src="./img/36.png" style="right;" alt="velocity" width="200" height="80"> </p> 
+<p align="center"> <img src="./img/36.png" style="right;" alt="velocity" width="200" height="50"> </p> 
 
 
 ## 5.2 Cost functions for Implementing Feasibility
