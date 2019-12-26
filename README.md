@@ -384,11 +384,27 @@ But first we're going to do something that will make our life a little bit easie
 
 As seen below It simplifies those three trajectories by removing three of the unknowns here. 
 
-<p align="right"> <img src="./img/24.png" style="right;" alt="Derivation Overview" width="500" height="150"> </p> 
+<p align="right"> <img src="./img/24.png" style="right;" alt="Derivation Overview" width="700" height="150"> </p> 
 
 We can gather the known terms into functions of the star boundary conditions to make it look like a bit cleaner. 
 
-<p align="right"> <img src="./img/25.png" style="right;" alt="Derivation Overview" width="350" height="190"> </p> 
+<p align="right"> <img src="./img/25.png" style="right;" alt="Derivation Overview" width="350" height="140"> </p> 
+
+The C1, C2, and C3 terms are functions of the initial conditions what remains is that we only have to identify three parameters(α<sub>3</sub>, α<sub>4</sub>, α<sub>5</sub>) that depends only on our N boundary condition. Those equations look like below and we know the final position, velocity and acceleration (s<sub>f</sub>,s˙<sub>f</sub>,s¨<sub>f</sub>) at time t<sub>f</sub>, since those are all the quantities that we beat.
+
+<p align="right"> <img src="./img/26.png" style="right;" alt="Derivation Overview" width="350" height="190"> </p> 
+
+Since we know them, a more useful way to think of these equations is like b, where I have deliberately separated the known quantities from the unknown variables that we wish to determine. 
+
+<p align="right"> <img src="./img/27.png" style="right;" alt="Derivation Overview" width="500" height="150"> </p> 
+
+
+This is starting to look like a very solvable system of three equations and the best way to solve this is with a matrix that looks like below.
+<p align="right"> <img src="./img/27.png" style="right;" alt="Derivation Overview" width="500" height="190"> </p> 
+
+The problem can be solved by inverting this matrix using any matrix mathematical library, which we will do later. 
+
+# 5. Polynomial Trajectory Generation
 
 
 
