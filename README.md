@@ -315,7 +315,7 @@ It is not sufficient to solve the planning problem when there are dynamic object
 
 Now, we need a way to generate such a trajectory and the way we're going to do this, is by separating the planning we do in the S dimension from the planning we do in a d dimension. Instead of thinking about one picture in three dimension, we usually decide to reason about two pictures. Each of which is in two dimensions. I'm going to walk through the same vehicle tracking example you see in the previous gif.
 
-<p align="right"> <img src="./img/15.gif" style="right;" alt="separating the planning we do in the S dimension from the planning we do in a d dimension" width="420" height="300"> </p> 
+<p align="right"> <img src="./img/15.gif" style="right;" alt="separating the planning we do in the S dimension from the planning we do in a d dimension" width="500" height="300"> </p> 
 
 As seen above it's a trajectory and we can fully describe what the vehicle did within these 15 seconds.
 
@@ -331,5 +331,16 @@ Finally, I will show you how by generating many similar jerk minimizing trajecto
 ## 4.1 Trajectories with Boundary Conditions
 
 By assuming, a situation like below s, t and d, t trajectories turns out that these aren't physically possible. The kink in the slope would translate in an instantaneous jumping speed, which would require infinite acceleration.
+
+<p align="right"> <img src="./img/16.png" style="right;" alt="Trajectories with Boundary Conditions" width="500" height="350"> </p> 
+
+Now, if we were to send them (s, t and d, t trajectories) to our motion control module, maybe they can track this trajectory, but probably not and even if they tried to track it, it would result in a very strong acceleration of our car, which is both uncomfortable and dangerous.
+
+
+This is why we need both continuity and smoothness in our trajectories. But how much continuity and smoothness?
+
+We know we want continuity in position, since our car cannot teleport and it would not make sense to compute a trajectory starting 10 metres ahead of us and we also know that our car cannot instantaneously change speed, therefore the speed should also be continuous. Following this logic you could also say that the acceleration should be continuous and maybe the acceleration's derivity as well.
+
+**Position becomes velocity, velocity because acceleration, acceleration becomes jerk, and going even further you get snap, crackle, and pop**. It turns out that one of these quantities is directly related to human perception of comfort. Jerk is the quantity that humans perceive as uncomfortable. We can tolerate high acceleration but we don't like it when our acceleration changes too quickly which is high jerk. When we design trajectories for self-driving car, we would like it, if they were jerk minimizing.
 
 
