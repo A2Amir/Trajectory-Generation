@@ -497,3 +497,32 @@ The tricky part is balancing all of these costs correctly. Often, our goals conf
 
 <p align="right"> <img src="./img/51.gif" style="right;" alt="Cost functions" width="600" height="180"> </p> 
 As seen above the green trajectory got a low cost and ends up being selected.
+
+# 6. Polynomial Trajectory Generation Playground
+
+You can play around with cost function design and weight tweaking. In the Python code you will be provided, you will have a working Polynomial Trajectory Generator. You can see it in action by doing the following:
+
+1.	run python evaluate_ptg.py. You should see a plot similar to the one below. This plot shows the s (x-axis) and d(y-axis) trajectories followed by a vehicle in traffic (red) and a self driving car (blue).
+
+<p align="right"> <img src="./img/41.png" style="right;" alt="Polynomial Trajectory Generation Playground" width="500" height="300"> </p>
+
+In this situation, the self driving car was trying to get behind the target vehicle, but the cost functions it was using weren't weighted appropriately and so it didn't behave as expected.
+
+
+2.	ptg.py - The primary code for generating a polynomial trajectory for some constraints. This is also where weights are assigned to cost functions. Adjusting these weights (and possibly adding new cost functions), can have a big effect on vehicle behavior.
+
+3.	cost_functions.py - This file contains many cost functions which are used in ptg.py when selecting the best trajectory. Some cost functions aren't yet implemented.
+
+4.	evaluate_ptg.py - This file sets a start state, goal, and traffic conditions and runs the PTG code. Feel free to modify the goal, add traffic, etc... to test your vehicle's trajectory generation ability.
+
+5.	constants.py - constants like speed limit, vehicle size, etc... 
+
+6.	helpers.py - helper functions used by other files.
+
+
+
+
+
+
+
+
