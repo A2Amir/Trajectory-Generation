@@ -468,4 +468,32 @@ Finally the velocity is checked against values specified by the map or the behav
 
 ## 5.2 Cost functions for Implementing Feasibility
 
+In most cases, the behavior layer might not send an exact end configuration to reach but rather an approximate one like below (yellow ellipse). Therefore, we want to identify a varied goal state that leads our vehicle in the approximate end configuration that's being sent to us (gif in the other lane).
 
+That is where our sampling based approach comes in handy. We don't know for sure what a good end state is even if we receive an exact  s & d coordinate from the behavior layer, we still have to find a good end velocity and acceleration for our car. Most times s and d aren't fixed, therefore we want to sample a large number of end configurations around on the approximate desired position that we wish to drive our car to, we generate the corresponding Jerk minimizing trajectories for each goal configuration, then we discard all non-derivable rajectories (all trajectories that collide with the road boundaries, or with other vehicles or pedestrians as predicted by the prediction layer).
+
+<p align="right"> <img src="./img/41.gif" style="right;" alt="Cost functions" width="600" height="180"> </p> 
+
+Now, we have a nice set of derivable trajectories, which are all collision free and Jerk optimal in each dimension with respect to the start and goal configurations. We need to decide which one the car should follow. That means we need to rank them, which we are going to do by defining a cost function. What makes sense as a cost function?
+
+
+First, consider Jerk. For each pair of end configurations,a quintic polynomial is Jerk optimal but given that all the trajectories obtained are different final configuration maybe some are better than others. In addition to that, we want to consider longitudinal versus lateral Jerk. What is worse for comfort? Turns out that side to side Jerk is more uncomfortable. So we want to prioritize minimizing that over minimizing longitudinal Jerk.
+
+<p align="center"> <img src="./img/37.png" style="right;" alt="Jerk Cost functions" width="180" height="90"> </p> 
+
+Next, consider distance to obstacles. Given these two configurations below,we would prefer being further away from the other vehicle to a situation where we are right next to their rear bumper.
+
+<p align="center"> <img src="./img/38.png" style="right;" alt="distance to obstacles Cost functions" width="280" height="90"> </p> 
+
+Also, we want to consider distance to center line. We might prefer to be close to the center of the line so, in choosing between these two scenarios below, maybe we would prefer the one on the right.
+
+<p align="center"> <img src="./img/39.png" style="right;" alt="distance to center line Cost functions" width="280" height="90"> </p> 
+
+Finally, it is time to go. All else being equal given the final S, we would prefer to arrive at our destination earlier rather than later. So we might prefer the red situation.
+
+<p align="center"> <img src="./img/40.png" style="right;" alt="time Cost functions" width="280" height="90"> </p> 
+
+The tricky part is balancing all of these costs correctly. Often, our goals conflict so the trajectory that minimizes lateral Jerk may not be the one that keeps us closest to the center line. In practice, most of the hard work is in the details of balancing these cost functions. Now that we have defined all these cost functions and combined them into one weighted cost function,we can look back at the scenario we just saw and use the supplied cost functions to calculate the cost for each trajectory.
+
+<p align="right"> <img src="./img/51.gif" style="right;" alt="Cost functions" width="600" height="180"> </p> 
+As seen above the green trajectory got a low cost and ends up being selected.
