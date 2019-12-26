@@ -400,11 +400,33 @@ Since we know them, a more useful way to think of these equations is like b, whe
 
 
 This is starting to look like a very solvable system of three equations and the best way to solve this is with a matrix that looks like below.
-<p align="right"> <img src="./img/27.png" style="right;" alt="Derivation Overview" width="500" height="190"> </p> 
+<p align="right"> <img src="./img/28.png" style="right;" alt="Derivation Overview" width="500" height="190"> </p> 
 
 The problem can be solved by inverting this matrix using any matrix mathematical library, which we will do later. 
 
 # 5. Polynomial Trajectory Generation
+
+I am  going to to implement a polynomial solver to generate Jerk minimizing trajectories.
+
+First, I want to show you how it's being used. Let's consider the S coordinates first. As an input, it takes the current vehicle state, the goal state, and the duration and as an output, it will generate six coefficients, which uniquely define the polynomial that describes the longitudinal trajectory.Similarly, we feed input parameters to our solver regarding lateral configurations and compute the lateral trajectory.
+
+<p align="right"> <img src="./img/29.png" style="right;" alt="Polynomial Trajectory Generation" width="500" height="300"> </p> 
+
+
+## 5.1 Implement Quintic Polynomial Solver C++
+
+In this section you will implement a quintic polynomial solver. This will let you take boundary conditions as input and generate a polynomial trajectory, which matches those conditions with minimal jerk.
+
+* Inputs: the solver will take three inputs.
+1. start - [si,si˙,si¨]
+2. end - [sf,sf˙,sf¨]
+3. T - the duration of maneuver in seconds.
+* Tips: Remember, you are solving a system of equations: matrices will be helpful! The equations for position, velocity, and acceleration are given by:
+
+<p align="right"> <img src="./img/30.png" style="right;" alt="Polynomial Trajectory Generation" width="500" height="120"> </p> 
+
+All these quantities are known except for α3,α4,α5.
+
 
 
 
