@@ -347,7 +347,7 @@ We know we want continuity in position, since our car cannot teleport and it wou
 
 What is a jerk minimizing trajectory? An interesting and useful fact to us is that it is relatively easy to compute a jerk optimal trajectory in one dimension. In fact, consider a function s of t different from time zero to time tf.
 
-<p align="right"> <img src="./img/17.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="100"> </p> 
+<p align="right"> <img src="./img/17.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="60"> </p> 
 
 recall that jerk is a third derivative of position. The total jerk accumulated over the duration of the trajectory and here, we want to analyze both positive and negative jerk therefore, we're going to look at total square jerk.
 
@@ -367,10 +367,15 @@ You can see the equation has six coefficients and six coefficients means six tun
 
 The things we'd like to constrain are the initial position, velocity, and acceleration as well as the final position, velocity and acceleration. Now, this is just the 1D representing the longitude of displacement but, the same for the lateral displacement applies. This gives us 12 variables to pick in order to fully define the motion of our vehicle in S&D over time.
 
-<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="120"> </p> 
+<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="150"> </p> 
 
 ## 4.3 Derivation Overview
 
+In the previous section, I showed you that the position of a jerk minimizing trajectory is given by a quintic polynomial. In this section, I'm going to present a quick and non-rigorous walk through of how we find the six coefficients that describe these polynomial. 
+
+First, we differentiate the equations of the position in order to get the equations for the velocity and then we differentiate it again in order to get the equation for the acceleration. Now, we could just plug in our six boundary conditions to get the six equations. 
+
+<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="200" height="120"> </p> 
 
 
 
