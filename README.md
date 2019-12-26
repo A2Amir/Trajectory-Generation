@@ -427,6 +427,19 @@ In this section you will implement a quintic polynomial solver. This will let yo
 
 All these quantities are known except for α3,α4,α5.
 
+## 5.2 Implementing Feasibility
+When evaluating the feasibility of a potential trajectory:
 
+1.	Maximum velocity with respect to car’s capabilities and speed limit
+2.	Minimum velocity
+3.	Maximum acceleration
+4.	Minimum acceleration
+5.	Steering angle
+
+should be checked because, a car can only go so fast and speeds above the vehicle maximum are not feasible and minimum velocity corresponds to going backwards and that matters, too.
+For maximum acceleration, we need to consider both lateral and longitudinal acceleration. Maximum lateral accelerations need to be checked to avoid rollover or skidding and maximum longitudinal acceleration depends on your vehicle's powertrain. Minimum accelerations would be negative and correspond to the vehicle maximum braking force. Your car can only turn so much and steering angle should be checked as well.
+
+Here I want to give you a few hints about how to do some initial validation for your trajectory. In order to do so, we're going to neglect the curvature of the road and assume it is locally straight.
+Regarding longitudinal acceleration, we make the additional assumption that our heading is pretty much aligned with the road. This allows us to say that S doubled dots is the longitude acceleration of the car. Therefore, we need to check that at any point of the trajectory, this acceleration is less than the maximum acceleration that the engine would need to supply and more than the maximum braking deceleration of the car, this could be a fixed value in real life however, this should probably be computed using information about the friction of the road.
 
 
