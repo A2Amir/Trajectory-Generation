@@ -362,13 +362,13 @@ Now, we can also use a helpful fact about functions, which is that any function 
 
 When you take this form of s and add in the information that we have about it's time derivative, you find, All of the coefficient bigger than five are zero, which means that all minimum jerk trajectories can be represented as a fifth order polynomial like below.
 
-<p align="right"> <img src="./img/20.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="200"> </p> 
+<p align="right"> <img src="./img/20.png" style="right;" alt="Jerk Minimizing Trajectories" width="550" height="300"> </p> 
 
 You can see the equation has six coefficients and six coefficients means six tuneable parameters that we can choose from in order to define the shape of a 1D trajectory and in practice, we use them to specify the boundary conditions of our trajectory.
 
 The things we'd like to constrain are the initial position, velocity, and acceleration as well as the final position, velocity and acceleration. Now, this is just the 1D representing the longitude of displacement but, the same for the lateral displacement applies. This gives us 12 variables to pick in order to fully define the motion of our vehicle in S&D over time.
 
-<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="350" height="150"> </p> 
+<p align="right"> <img src="./img/21.png" style="right;" alt="Jerk Minimizing Trajectories" width="500" height="300"> </p> 
 
 ## 4.3 Derivation Overview
 
